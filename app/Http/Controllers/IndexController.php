@@ -8,6 +8,8 @@ use App\Page;
 use App\Service;
 use App\Portfolio;
 use App\People;
+use Illuminate\Support\Facades\DB;
+
 
 class IndexController extends Controller
 {
@@ -18,6 +20,10 @@ class IndexController extends Controller
        $portfolios = Portfolio::all();
        $services = Service::all();
        $peoples =People::all();
+
+       //получим доп инф. о фильтрах табл portfolios
+       $tags = DB::table('portfolios')->distinct()->pluck('filter');
+
 
 
        //будет сожержать список меню
@@ -43,13 +49,14 @@ class IndexController extends Controller
        array_push($menu, $item);
 
        return view('site.index', array(
-                              //ключи имена переменных
-                              //эти переменные будут доступны в шаблоне
+                               //ключи имена переменных
+                               //эти переменные будут доступны в шаблоне
                                'menu'=>$menu,
                                'pages'=>$pages,
                                'services'=>$services,
                                'portfolios'=>$portfolios,
                                'peoples'=>$peoples,
+                               'tags'=>$tags,
                             ));
 
     }
