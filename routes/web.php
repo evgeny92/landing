@@ -29,7 +29,7 @@ Route::get('/page/{alias}', ['uses'=>'PageController@execute', 'as'=>'page'] );
 /*
  * Формирование маршрута для аутентификации
  */
- Route::auth();
+Route::auth();
 
 /*
  * Группа маршрутов для закрытого раздела

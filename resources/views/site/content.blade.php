@@ -11,8 +11,9 @@
                             <div class="row">
                                 <div class="col-lg-5 col-sm-7">
                                     <div class="top_left_cont zoomIn wow animated">
-                                       {!! $page->text !!}
-                                        <a href="{{ route('page', array('alias'=>$page->alias)) }}" class="read_more2">Read more</a> </div>
+                                        {!! $page->text !!}
+                                        <a href="{{ route('page', array('alias'=>$page->alias)) }}" class="read_more2">Read
+                                            more</a></div>
                                 </div>
                                 <div class="col-lg-7 col-sm-5">
                                     {!! Html::image('assets/img/'.$page->images) !!}
@@ -37,7 +38,9 @@
                                     <div class=" delay-01s animated fadeInDown wow animated">
                                         {!! $page->text !!}
                                     </div>
-                                    <div class="work_bottom"> <span>Want to know more..</span> <a href="{{ route('page', array('alias'=>$page->alias)) }}" class="contact_btn">Contact Us</a> </div>
+                                    <div class="work_bottom"><span>Want to know more..</span> <a
+                                                href="{{ route('page', array('alias'=>$page->alias)) }}"
+                                                class="contact_btn">Contact Us</a></div>
                                 </div>
                             </div>
                         </div>
@@ -56,36 +59,37 @@
 @if(isset($services) && is_object($services))
 
     <!--Service-->
-<section  id="service">
-    <div class="container">
-        <h2>Services</h2>
-        <div class="service_wrapper">
+    <section id="service">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="service_wrapper">
 
-            @foreach($services as $k=>$service)
+                @foreach($services as $k=>$service)
 
-                {{-- Формирование ряда--}}
-                @if($k == 0 || $k%3 == 0)
-                    <div class="row {{ ($k != 0) ? 'borderTop' : '' }}">
-                @endif
+                    {{-- Формирование ряда--}}
+                    @if($k == 0 || $k%3 == 0)
+                        <div class="row {{ ($k != 0) ? 'borderTop' : '' }}">
+                            @endif
 
-                <div class="col-lg-4 {{ ($k%3 > 0) ? 'borderLeft' : '' }} {{ ($k > 2) ? 'mrgTop' : '' }}">
-                    <div class="service_block">
-                        <div class="service_icon delay-03s animated wow  zoomIn"> <span><i class="fa {{ $service->icon }}"></i></span> </div>
-                        <h3 class="animated fadeInUp wow">{{ $service->name }}</h3>
-                        <p class="animated fadeInDown wow">{{ $service->text }}</p>
-                    </div>
-                </div>
+                            <div class="col-lg-4 {{ ($k%3 > 0) ? 'borderLeft' : '' }} {{ ($k > 2) ? 'mrgTop' : '' }}">
+                                <div class="service_block">
+                                    <div class="service_icon delay-03s animated wow  zoomIn"><span><i
+                                                    class="fa {{ $service->icon }}"></i></span></div>
+                                    <h3 class="animated fadeInUp wow">{{ $service->name }}</h3>
+                                    <p class="animated fadeInDown wow">{{ $service->text }}</p>
+                                </div>
+                            </div>
 
-                {{--если это выражение при / на 3 и в качестве отстатка будет 0--}}
-                @if(($k + 1)%3 == 0)
-                    </div>
-                @endif
+                            {{--если это выражение при / на 3 и в качестве отстатка будет 0--}}
+                            @if(($k + 1)%3 == 0)
+                        </div>
+                    @endif
 
-            @endforeach
+                @endforeach
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
     <!--/Service-->
 @endif
 
@@ -133,22 +137,24 @@
                     </ul>
                 </div>
                 <!--/Portfolio Filters -->
-            @endif
+        @endif
 
-            <!-- Portfolio Wrapper -->
-            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
+        <!-- Portfolio Wrapper -->
+            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;"
+                 id="portfolio_wrapper">
 
-                @foreach($portfolios as $item)
-                    <!-- Portfolio Item -->
-                        <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   {{ $item->filter }} isotope-item">
-                            <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images, $item->name) }} </div>
-                            <div class="item_overlay">
-                                <div class="item_info">
-                                    <h4 class="project_name">{{ $item->name }}</h4>
-                                </div>
+            @foreach($portfolios as $item)
+                <!-- Portfolio Item -->
+                    <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
+                         class="portfolio-item one-four   {{ $item->filter }} isotope-item">
+                        <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images, $item->name) }} </div>
+                        <div class="item_overlay">
+                            <div class="item_info">
+                                <h4 class="project_name">{{ $item->name }}</h4>
                             </div>
                         </div>
-                        <!--/Portfolio Item -->
+                    </div>
+                    <!--/Portfolio Item -->
                 @endforeach
             </div>
             <!--/Portfolio Wrapper -->
@@ -206,6 +212,7 @@
 @endif
 
 
+
 <!--Footer-->
 <footer class="footer_wrapper" id="contact">
     <div class="container">
@@ -242,26 +249,44 @@
                     </div>
 
 
-
                     <ul class="social_links">
-                        <li class="twitter animated bounceIn wow delay-02s"><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-                        <li class="facebook animated bounceIn wow delay-03s"><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-                        <li class="pinterest animated bounceIn wow delay-04s"><a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a></li>
-                        <li class="gplus animated bounceIn wow delay-05s"><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="twitter animated bounceIn wow delay-02s"><a href="javascript:void(0)"><i
+                                        class="fa fa-twitter"></i></a></li>
+                        <li class="facebook animated bounceIn wow delay-03s"><a href="javascript:void(0)"><i
+                                        class="fa fa-facebook"></i></a></li>
+                        <li class="pinterest animated bounceIn wow delay-04s"><a href="javascript:void(0)"><i
+                                        class="fa fa-pinterest"></i></a></li>
+                        <li class="gplus animated bounceIn wow delay-05s"><a href="javascript:void(0)"><i
+                                        class="fa fa-google-plus"></i></a></li>
                     </ul>
                 </div>
+
                 <div class="col-lg-8 wow fadeInLeft delay-06s">
+
                     <div class="form">
-                        <input class="input-text" type="text" name="" value="Your Name *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                        <input class="input-text" type="text" name="" value="Your E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                        <textarea class="input-text text-area" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
-                        <input class="input-btn" type="submit" value="send message">
+                        <form action="{{ route('home') }}" method="post">
+
+                            <input class="input-text" type="text" name="name" value="Your Name *"
+                                   onFocus="if(this.value==this.defaultValue)this.value='';"
+                                   onBlur="if(this.value=='')this.value=this.defaultValue;">
+                            <input class="input-text" type="text" name="email" value="Your E-mail *"
+                                   onFocus="if(this.value==this.defaultValue)this.value='';"
+                                   onBlur="if(this.value=='')this.value=this.defaultValue;">
+                            <textarea name="text" class="input-text text-area" cols="0" rows="0"
+                                      onFocus="if(this.value==this.defaultValue)this.value='';"
+                                      onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
+                            <input class="input-btn" type="submit" value="send message">
+                            {{ csrf_field() }}
+                        </form>
                     </div>
+
+
                 </div>
             </div>
         </section>
     </div>
     <div class="container">
-        <div class="footer_bottom"><span>Copyright © 2014,    Template by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div>
+        <div class="footer_bottom"><span>Copyright © 2014,    Template by <a
+                        href="http://webthemez.com">WebThemez.com</a>. </span></div>
     </div>
 </footer>

@@ -9,11 +9,45 @@ use App\Service;
 use App\Portfolio;
 use App\People;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class IndexController extends Controller
 {
     public function execute(Request $request){
+
+       //какой тип запроса использ. пользователь
+       if($request->isMethod('post')){
+
+          //формирование ошибки
+          $messages = [
+             'required' => "Поле :attribute обязательно к заполнению",
+             'email' => "Поле :attribute должно соответствовать E-mail адресу"
+          ];
+
+          //Обработка входящих данных из формы валидатором
+          $this->validate($request, [
+             'name'=>'required|max:50',
+             'email'=>'required|email',
+             'text'=>'required'
+          ], $messages);
+
+          //получим данные объекта, которые хранятся в форме и присвоим к переменной data
+          $data = $request->all();
+
+          //получили набор данных, и отправим их на почту
+          $result = Mail::send('site.email', ['data'=>$data], function($message) use($data){
+
+             $mail_admin = env('MAIL_ADMIN');
+             $message->from($data['email'], $data['name']);
+             $message->to($mail_admin)->subject('Question');
+          });
+
+          if($result){
+             return redirect()->route('home')->with('status', 'Email is send');
+          }
+
+       }
 
        //выбираем все записи из таблиц
        $pages = Page::all();
@@ -26,7 +60,7 @@ class IndexController extends Controller
 
 
 
-       //будет сожержать список меню
+       //будет содержать список меню
        $menu = array();
        //циклом выводим меню
        foreach($pages as $page){
