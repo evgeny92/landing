@@ -13,7 +13,7 @@ class PortfolioEditController extends Controller
       //удаление страницы
       if($request->isMethod('delete')){
          $portfolio->delete();
-         return redirect('admin')->with('status', 'Старинаца удалена');
+         return redirect('admin')->with('status', 'Портфолио удалено');
       }
 
       //если метод пост
@@ -51,7 +51,7 @@ class PortfolioEditController extends Controller
          $portfolio->fill($input);
          //пересохраняем
          if($portfolio->update()){
-            return redirect('admin')->with('status', 'Страница обновлена');
+            return redirect('admin')->with('status', 'Портфолио обновлено');
          }
       }
 
@@ -61,7 +61,7 @@ class PortfolioEditController extends Controller
       if(view()->exists('admin.portfolios_edit')){
 
          $data = [
-            'title'=>'Редактирование страницы - '.$old['name'],
+            'title'=>'Редактирование портфолио - '.$old['name'],
             'data'=>$old
          ];
          return view('admin.portfolios_edit', $data);
